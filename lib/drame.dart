@@ -1,3 +1,4 @@
+import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:streamapp/profile.dart';
 import 'package:video_player/video_player.dart';
@@ -6,7 +7,13 @@ import 'function.dart';
 import 'homePage.dart';
 
 class dramePage extends StatefulWidget {
-  const dramePage({super.key});
+  final List<videoModel> videos;
+  final String title;
+  const dramePage({
+    Key? key,
+    required this.videos,
+    required this.title,
+  }) : super(key: key);
 
   @override
   State<dramePage> createState() => _actionPageState();
@@ -14,8 +21,11 @@ class dramePage extends StatefulWidget {
 
 class _actionPageState extends State<dramePage> {
   // Map pour stocker un contrôleur pour chaque vidéo
+
+
   Map<String, VideoPlayerController> videoControllers = {};
   Map<String, bool> isInitialized = {};
+
 
   final VideoService videoService = VideoService();
   late List<videoModel> drameVideos;
@@ -35,6 +45,9 @@ class _actionPageState extends State<dramePage> {
     super.dispose();
   }
 
+
+
+
   // Initialiser un contrôleur pour une vidéo spécifique
   Future<void> _initializeController(String videoPath) async {
     if (!videoControllers.containsKey(videoPath)) {
@@ -47,6 +60,7 @@ class _actionPageState extends State<dramePage> {
       });
     }
   }
+
 
   // Gérer la lecture/pause d'une vidéo spécifique
   void _playPause(String videoPath) {
@@ -67,6 +81,10 @@ class _actionPageState extends State<dramePage> {
       });
     }
   }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -90,7 +108,17 @@ class _actionPageState extends State<dramePage> {
           )
         ],
       ),
-      body:  ListView.builder(
+      body:
+
+
+      GridView.builder(
+
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,  // 2 vidéos par ligne
+          childAspectRatio: 0.7,  // Ajustez ce ratio selon vos besoins
+          crossAxisSpacing: 8.0,  // Espacement horizontal entre les vidéos
+          mainAxisSpacing: 8.0,   // Espacement vertical entre les lignes
+        ),
 
         itemCount: drameVideos.length,
         itemBuilder: (context, index) {
@@ -104,9 +132,8 @@ class _actionPageState extends State<dramePage> {
             child: Column(
 
               children: [
-
                 Container(
-                  height: 200,
+                  height: 100,
 
                   child: Stack(
                     alignment: Alignment.center,
@@ -131,6 +158,7 @@ class _actionPageState extends State<dramePage> {
                     ],
                   ),
                 ),
+
                 ListTile(
 
                   title: Text(
@@ -144,6 +172,8 @@ class _actionPageState extends State<dramePage> {
           );
         },
       ),
+
+
       // Barre de navigation en bas
       bottomNavigationBar: BottomNavigationBar(
         items:  [

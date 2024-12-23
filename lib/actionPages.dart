@@ -88,7 +88,13 @@ class _actionPageState extends State<actionPage> {
           )
         ],
       ),
-      body:  ListView.builder(
+      body:  GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,  // 2 vidéos par ligne
+          childAspectRatio: 0.7,  // Ajustez ce ratio selon vos besoins
+          crossAxisSpacing: 8.0,  // Espacement horizontal entre les vidéos
+          mainAxisSpacing: 8.0,   // Espacement vertical entre les lignes
+        ),
 
         itemCount: actionVideos.length,
         itemBuilder: (context, index) {
@@ -104,7 +110,7 @@ class _actionPageState extends State<actionPage> {
               children: [
 
                 Container(
-                  height: 200,
+                  height: 100,
 
                   child: Stack(
                     alignment: Alignment.center,

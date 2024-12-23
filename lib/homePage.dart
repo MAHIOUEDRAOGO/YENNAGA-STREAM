@@ -215,7 +215,7 @@ class _homePageState extends State<homePage> {
                         case 2:Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>  dramePage(),
+                            builder: (context) =>  dramePage(videos: _videoService.getDramaVideos(),title: 'Drame',),
                           ),
                         );
                         /**
@@ -260,7 +260,13 @@ class _homePageState extends State<homePage> {
 
                 ),
 
-                ListView.builder(
+                GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,  // 2 vidéos par ligne
+                    childAspectRatio: 0.7,  // Ajustez ce ratio selon vos besoins
+                    crossAxisSpacing: 8.0,  // Espacement horizontal entre les vidéos
+                    mainAxisSpacing: 8.0,   // Espacement vertical entre les lignes
+                  ),
 
                   itemCount: allVideos.length,
                   itemBuilder: (context, index) {
@@ -276,7 +282,7 @@ class _homePageState extends State<homePage> {
                         children: [
 
                           Container(
-                            height: 200,
+                            height: 120,
                             child: Stack(
                               alignment: Alignment.center,
                               children: [
