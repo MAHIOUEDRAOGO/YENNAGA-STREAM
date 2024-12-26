@@ -1,5 +1,6 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:streamapp/plein_ecran.dart';
 import 'package:streamapp/profile.dart';
 import 'package:video_player/video_player.dart';
 
@@ -129,6 +130,19 @@ class _actionPageState extends State<dramePage> {
 
           return Card(
             margin: const EdgeInsets.all(8.0),
+          child: GestureDetector(
+          onLongPress: () {
+          if (videoControllers[video.videoPath] != null) {
+          Navigator.push(
+          context,
+          MaterialPageRoute(
+          builder: (context) => FullScreenVideoPage(
+          controller: videoControllers[video.videoPath]!,
+          ),
+          ),
+          );
+          }
+          },
             child: Column(
 
               children: [
@@ -169,6 +183,7 @@ class _actionPageState extends State<dramePage> {
                 ),
               ],
             ),
+          ),
           );
         },
       ),

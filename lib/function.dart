@@ -24,7 +24,7 @@ class VideoService {
     return [
       videoModel(
           title: 'Une femme en detresse',
-          description: 'Le mari est vraiment une ORDURE immatriculée....Aucun',
+          description: 'Le mari est vraiment une ORDURE',
           videoPath: 'assets/videos/3.mp4'
       ),
       videoModel(
@@ -41,13 +41,12 @@ class VideoService {
     return [
       videoModel(
           title: 'Burkimbile Halaale',
-          description: 'Kathy, la fille de l\'inspecteur Luner, est retrouvée en'
-              ' état de choc .',
+          description: 'Kathy, la fille de l\'inspecteur Luner.',
           videoPath: 'assets/videos/1.mp4'
       ),
       videoModel(
           title: 'De l\'amour a la haine',
-          description: ' un film poignant qui plonge au cœur des réalités sociales du Burkina Faso..',
+          description: ' un film poignant du Burkina Faso..',
           videoPath: 'assets/videos/4.mp4'
       ),
       // Ajouter autres vidéos drame...

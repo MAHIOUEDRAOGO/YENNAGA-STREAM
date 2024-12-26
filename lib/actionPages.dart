@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:streamapp/profile.dart';
 import 'package:video_player/video_player.dart';
 
 import 'function.dart';
+import 'homePage.dart';
 
 class actionPage extends StatefulWidget {
   const actionPage({super.key});
@@ -168,16 +170,20 @@ class _actionPageState extends State<actionPage> {
             label: 'Profile',
           ),
         ],
-        /**
-            onTap: (index) {
-            if (index == 2) {
-            Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => fovoritesPage()),
-            );
+          onTap: (index) {
+            switch(index) {
+              case 0:Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => homePage()),
+              );
+              break;
+              case 3:Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfilePage()),
+              );
             }
             // Gérer les autres index...
-            },**/
+          }
       ),
     );
   }
